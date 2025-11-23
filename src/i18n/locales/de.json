@@ -1,0 +1,294 @@
+{
+  "nav": {
+    "home": "Startseite",
+    "products": "Produkte",
+    "about": "Über uns",
+    "news": "Aktuelles",
+    "contact": "Kontakt"
+  },
+  "hero": {
+    "cta1": "Mehr erfahren",
+    "cta2": "Jetzt entdecken",
+    "contactButton": "Kontakt aufnehmen"
+  },
+  "about": {
+    "title": "Über uns",
+    "subtitle": "UNTERNEHMENSPOLITIK",
+    "motto": "QUALITÄT. VERANTWORTUNG. NACHHALTIGKEIT.",
+    "intro": "Willkommen bei der Alphaweld GmbH – Ihrem Großhandelspartner für hochwertige schweißtechnische Produkte. Unsere Unternehmenspolitik ist Ausdruck unseres Selbstverständnisses als verantwortungsvoller Akteur im internationalen Handel. Sie vereint unser Qualitätsversprechen mit unserem Engagement für Umwelt, Ethik und faire Lieferketten.",
+    "values": {
+      "quality": {
+        "title": "Qualität und Kundenzufriedenheit",
+        "description": "Wir stehen für geprüfte Qualität, normgerechte Produkte und zuverlässigen Service. Unsere Kunden profitieren von:",
+        "items": [
+          "Hochwertigen, langlebigen Produkten",
+          "Fachlicher Beratung durch erfahrene Spezialisten", 
+          "Lückenloser Qualitätskontrolle und Konformitätssicherung"
+        ],
+        "quote": "Unsere Kunden sollen sich nicht nur auf unsere Produkte verlassen können – sondern auch auf unser Wort."
+      },
+      "sustainability": {
+        "title": "Nachhaltigkeit & Umweltschutz",
+        "description": "Wir übernehmen Verantwortung für Mensch und Umwelt – heute und in Zukunft.",
+        "principles": "Unsere Prinzipien:",
+        "items": [
+          "Reduktion von Emissionen & Verpackungsmüll",
+          "Bevorzugung ressourcenschonender Materialien",
+          "Zusammenarbeit mit umweltzertifizierten Lieferanten (z.B. ISO 14001)",
+          "Förderung nachhaltiger Logistiklösungen"
+        ]
+      },
+      "sourcing": {
+        "title": "Einkauf mit Verantwortung",
+        "subtitle": "Ethisch. Sorgfältig. Konfliktfrei.",
+        "description": "Unsere Einkaufsentscheidungen basieren auf strengen Kriterien:",
+        "items": [
+          "Keine Kinder- oder Zwangsarbeit",
+          "Faire Arbeitsbedingungen & Gleichbehandlung",
+          "Ausschluss von Konfliktmaterialien",
+          "Lieferkettensorgfalt gemäß LkSG",
+          "Transparente & nachvollziehbare Herkunft"
+        ]
+      },
+      "integrity": {
+        "title": "Integrität & soziale Verantwortung",
+        "description": "Vertrauen ist unser Fundament. Wir fördern:",
+        "items": [
+          "Eine offene, diskriminierungsfreie Unternehmenskultur",
+          "Arbeitssicherheit & Gesundheitsschutz",
+          "Vereinbarkeit von Beruf und Familie",
+          "Gesetzestreue und ethisches Verhalten"
+        ]
+      },
+      "improvement": {
+        "title": "Kontinuierliche Verbesserung",
+        "description": "Unsere Politik ist dynamisch – wie der Markt. Deshalb:",
+        "items": [
+          "Überprüfen und aktualisieren wir regelmäßig unsere Prozesse",
+          "Schulen wir unsere Mitarbeitenden kontinuierlich",
+          "Führen wir interne Audits & Lieferantenbewertungen durch",
+          "Lernen wir aus Feedback – und setzen es um"
+        ]
+      }
+    },
+    "downloads": {
+      "title": "Downloads",
+      "items": {
+        "policy": "Lieferkettenpolitik",
+        "sourcing": "Erklärung zur Rohstoffbeschaffung", 
+        "minerals": "Bericht Konfliktmineralien 2024"
+      },
+      "download": "PDF herunterladen",
+      "footer": "Fragen zur Alphaweld-Unternehmenspolitik? Kontaktieren Sie uns über unser Kontaktformular – wir stehen für Transparenz und einen offenen Dialog."
+    }
+  },
+  "contact": {
+    "title": "Kontakt",
+    "subtitle": "Haben Sie Fragen? Wir sind für Sie da!",
+    "form": {
+      "title": "Kontaktformular",
+      "subtitle": "Senden Sie uns Ihre Anfrage",
+      "type": "Art der Anfrage",
+      "typeRequired": "Art der Anfrage *",
+      "selectPlaceholder": "Bitte wählen Sie...",
+      "types": {
+        "general": "Allgemeine Anfrage",
+        "support": "Technischer Support",
+        "sales": "Vertrieb"
+      },
+      "firstName": "Vorname",
+      "firstNameRequired": "Vorname *",
+      "lastName": "Nachname", 
+      "lastNameRequired": "Nachname *",
+      "company": "Firma",
+      "address": "Adresse",
+      "addressPlaceholder": "Straße, Hausnummer, PLZ, Ort, Land",
+      "email": "E-Mail",
+      "emailRequired": "E-Mail *",
+      "message": "Nachricht",
+      "messageRequired": "Nachricht *",
+      "send": "Senden",
+      "spamProtection": "Spamschutz: Pflichtfelder sind mit * markiert",
+      "messageSent": "Nachricht gesendet",
+      "messageDescription": "Vielen Dank für Ihre Anfrage. Wir melden uns zeitnah bei Ihnen."
+    },
+    "location": {
+      "title": "Standort",
+      "subtitle": "Besuchen Sie uns vor Ort",
+      "address": "Postanschrift",
+      "openMaps": "In Google Maps öffnen"
+    },
+    "details": {
+      "title": "Kontaktdaten",
+      "phone": "Telefon",
+      "fax": "Fax",
+      "email": "E-Mail"
+    },
+    "hours": {
+      "title": "Öffnungszeiten",
+      "weekdays": "Mo-Fr:",
+      "time": "8:00 - 17:00"
+    },
+    "hotline": {
+      "title": "Service Hotline",
+      "time": "Mo-Fr: 8:00 - 17:00 Uhr"
+    },
+    "why": {
+      "title": "Warum Alphaweld?",
+      "items": [
+        "• Über 30 Jahre Erfahrung in der Schweißtechnik",
+        "• Individuelle Beratung und maßgeschneiderte Lösungen", 
+        "• Schnelle Lieferzeiten und zuverlässiger Service",
+        "• Hochwertige Produkte für professionelle Anwendungen"
+      ]
+    },
+    "response": {
+      "title": "Schnelle Antwort",
+      "description": "Wir antworten auf alle Anfragen innerhalb von 24 Stunden.",
+      "urgent": "Bei dringenden technischen Fragen erreichen Sie uns direkt über unsere Service-Hotline.",
+      "emergency": "Notfall-Support:",
+      "emergencyDesc": "Für kritische Produktionsausfälle"
+    },
+    "consultation": "Benötigen Sie eine individuelle Beratung?",
+    "consultationText": "Unser Expertenteam unterstützt Sie bei der Auswahl der optimalen Schweißlösung für Ihre spezifischen Anforderungen."
+  },
+  "news": {
+    "title": "News & Aktuelles",
+    "subtitle": "Bleiben Sie auf dem Laufenden über Produktneuheiten, Events und Unternehmensnews",
+    "categories": {
+      "all": "Alle",
+      "products": "Produktnews",
+      "events": "Events",
+      "company": "Unternehmen",
+      "education": "Bildung",
+      "digital": "Digital"
+    },
+    "readMore": "Weiterlesen",
+    "loadMore": "Weitere News laden",
+    "imageLoading": "Bild wird geladen..."
+  },
+  "search": {
+    "title": "Suchergebnisse",
+    "placeholder": "Produkte durchsuchen...",
+    "searching": "Suche läuft...",
+    "results": "Ergebnis",
+    "resultsPlural": "Ergebnisse",
+    "found": "Gefundene Produkte:",
+    "noResults": "Keine Produkte gefunden. Versuchen Sie andere Suchbegriffe.",
+    "searchTitle": "Produktsuche",
+    "searchDescription": "Geben Sie einen Suchbegriff ein, um unsere Produkte zu durchsuchen.",
+    "searchPlaceholder": "Produktname, Artikelnummer oder Beschreibung...",
+    "highlights": "Highlights:"
+  },
+  "productCategories": {
+    "title": "Unsere Produktkategorien",
+    "subtitle": "Entdecken Sie unser umfassendes Sortiment an hochwertigen Schweißprodukten und Schutzausrüstung für professionelle Anwendungen.",
+    "cta": {
+      "title": "Benötigen Sie eine individuelle Beratung?",
+      "description": "Unser Expertenteam unterstützt Sie bei der Auswahl der optimalen Schweißlösung für Ihre spezifischen Anforderungen.",
+      "consult": "Jetzt beraten lassen",
+      "catalog": "Katalog anfordern"
+    },
+    "categories": {
+      "migmag": {
+        "title": "MIG/MAG Brenner",
+        "description": "Hochwertige Schweißbrenner für professionelle Anwendungen"
+      },
+      "wig": {
+        "title": "WIG Brenner",
+        "description": "Präzise WIG-Brenner für anspruchsvolle Schweißarbeiten"
+      },
+      "plasma": {
+        "title": "Plasma Brenner", 
+        "description": "Moderne Plasma-Technologie für saubere Schnitte"
+      },
+      "machines": {
+        "title": "Schweißmaschinen",
+        "description": "Zuverlässige Schweißanlagen für jeden Einsatzbereich"
+      },
+      "safety": {
+        "title": "Arbeitsschutz",
+        "description": "Schutzausrüstung höchster Qualität"
+      },
+      "tungsten": {
+        "title": "Wolframelektroden",
+        "description": "Präzisionselektroden für optimale Schweißergebnisse"
+      }
+    }
+  },
+  "products": {
+    "title": "Produkte",
+    "subtitle": "Entdecken Sie unser umfassendes Sortiment hochwertiger Schweißprodukte",
+    "categories": {
+      "migmag": "MIG/MAG Brenner",
+      "wig": "WIG Brenner", 
+      "plasma": "Plasma Brenner",
+      "machines": "Schweißmaschinen",
+      "safety": "Arbeitsschutz",
+      "tungsten": "Wolframelektroden",
+      "grinding": "Wolfram-Anschleifgerät"
+    },
+    "details": "Details anzeigen",
+    "request": "Produkt anfragen",
+    "downloadSheet": "Datenblatt herunterladen",
+    "consultation": "Kostenlose Beratung",
+    "technicalSpecs": "Technische Daten",
+    "explosionDrawing": "Explosionszeichnung",
+    "imageGallery": "Bildergalerie",
+    "downloads": "Downloads",
+    "backToOverview": "Zurück zur Übersicht",
+    "highlights": "Produkthighlights",
+    "technicalData": "Technische Daten nach EN 60 974-7:",
+    "property": "Eigenschaft",
+    "value": "Wert",
+    "notFound": "Produkt nicht gefunden",
+    "notFoundText": "Das angeforderte Produkt konnte nicht gefunden werden.",
+    "backToProducts": "Zurück zu den Produkten",
+    "categoryNotFound": "Kategorie nicht gefunden", 
+    "categoryNotFoundText": "Die angeforderte Produktkategorie konnte nicht gefunden werden.",
+    "questionsCta": "Haben Sie Fragen zu diesem Produkt?",
+    "questionsText": "Unsere Experten beraten Sie gerne bei der Auswahl der passenden Schweißtechnik für Ihre spezifischen Anforderungen.",
+    "contactForm": "Kontaktformular",
+    "downloadTypes": {
+      "datasheet": "Datenblatt", 
+      "manual": "Bedienungsanleitung",
+      "explosion": "Explosionszeichnung"
+    },
+    "explosionText": "Detaillierte Explosionszeichnung für",
+    "downloadDrawing": "Zeichnung herunterladen"
+  },
+  "common": {
+    "loading": "Lade...",
+    "error": "Ein Fehler ist aufgetreten",
+    "notFound": "Nicht gefunden",
+    "search": "Suchen...",
+    "readMore": "Mehr erfahren",
+    "contact": "Kontakt aufnehmen", 
+    "requestConsultation": "Jetzt beraten lassen",
+    "requestCatalog": "Katalog anfordern",
+    "openMaps": "In Google Maps öffnen"
+  },
+  "footer": {
+    "company": "Schweißtechnik & Arbeitsschutz",
+    "description": "Ihr kompetenter Partner für hochwertige Schweißtechnik, Schweißbrenner, Schweißmaschinen und Arbeitsschutzausrüstung. Qualität, Innovation und Zuverlässigkeit seit Jahren.",
+    "quickLinks": "Quick Links",
+    "contact": "Kontakt",
+    "hotline": "Service Hotline",
+    "hours": "Mo-Fr: 8:00 - 17:00 Uhr",
+    "copyright": "© 2024 Alphaweld GmbH. Alle Rechte vorbehalten.",
+    "legal": {
+      "imprint": "Impressum",
+      "privacy": "Datenschutz", 
+      "terms": "AGB"
+    }
+  },
+  "breadcrumb": {
+    "home": "Startseite",
+    "products": "Produkte"
+  },
+  "maps": {
+    "company": "Alphaweld GmbH",
+    "address": "Geisweider Str. 130, 57078 Siegen", 
+    "open": "Öffnen"
+  }
+}

@@ -1,0 +1,294 @@
+{
+  "nav": {
+    "home": "Home",
+    "products": "Products",
+    "about": "About",
+    "news": "News",
+    "contact": "Contact"
+  },
+  "hero": {
+    "cta1": "Learn more",
+    "cta2": "Discover now",
+    "contactButton": "Contact us"
+  },
+  "about": {
+    "title": "About Us",
+    "subtitle": "CORPORATE POLICY",
+    "motto": "QUALITY. RESPONSIBILITY. SUSTAINABILITY.",
+    "intro": "Welcome to Alphaweld GmbH – your wholesale partner for high-quality welding products. Our corporate policy expresses our self-understanding as a responsible actor in international trade. It combines our quality promise with our commitment to environment, ethics and fair supply chains.",
+    "values": {
+      "quality": {
+        "title": "Quality and Customer Satisfaction",
+        "description": "We stand for proven quality, standard-compliant products and reliable service. Our customers benefit from:",
+        "items": [
+          "High-quality, durable products",
+          "Professional advice from experienced specialists", 
+          "Complete quality control and conformity assurance"
+        ],
+        "quote": "Our customers should not only be able to rely on our products – but also on our word."
+      },
+      "sustainability": {
+        "title": "Sustainability & Environmental Protection",
+        "description": "We take responsibility for people and the environment – today and in the future.",
+        "principles": "Our principles:",
+        "items": [
+          "Reduction of emissions & packaging waste",
+          "Preference for resource-saving materials",
+          "Cooperation with environmentally certified suppliers (e.g. ISO 14001)",
+          "Promotion of sustainable logistics solutions"
+        ]
+      },
+      "sourcing": {
+        "title": "Responsible Sourcing",
+        "subtitle": "Ethical. Careful. Conflict-free.",
+        "description": "Our purchasing decisions are based on strict criteria:",
+        "items": [
+          "No child or forced labor",
+          "Fair working conditions & equal treatment",
+          "Exclusion of conflict materials",
+          "Supply chain due diligence according to LkSG",
+          "Transparent & traceable origin"
+        ]
+      },
+      "integrity": {
+        "title": "Integrity & Social Responsibility",
+        "description": "Trust is our foundation. We promote:",
+        "items": [
+          "An open, non-discriminatory corporate culture",
+          "Occupational safety & health protection",
+          "Work-life balance",
+          "Legal compliance and ethical behavior"
+        ]
+      },
+      "improvement": {
+        "title": "Continuous Improvement",
+        "description": "Our policy is dynamic – like the market. Therefore:",
+        "items": [
+          "We regularly review and update our processes",
+          "We continuously train our employees",
+          "We conduct internal audits & supplier evaluations",
+          "We learn from feedback – and implement it"
+        ]
+      }
+    },
+    "downloads": {
+      "title": "Downloads",
+      "items": {
+        "policy": "Supply Chain Policy",
+        "sourcing": "Raw Material Procurement Statement", 
+        "minerals": "Conflict Minerals Report 2024"
+      },
+      "download": "Download PDF",
+      "footer": "Questions about Alphaweld corporate policy? Contact us via our contact form – we stand for transparency and open dialogue."
+    }
+  },
+  "contact": {
+    "title": "Contact",
+    "subtitle": "Do you have questions? We are here for you!",
+    "form": {
+      "title": "Contact Form",
+      "subtitle": "Send us your inquiry",
+      "type": "Type of inquiry",
+      "typeRequired": "Type of inquiry *",
+      "selectPlaceholder": "Please select...",
+      "types": {
+        "general": "General inquiry",
+        "support": "Technical support",
+        "sales": "Sales"
+      },
+      "firstName": "First name",
+      "firstNameRequired": "First name *",
+      "lastName": "Last name", 
+      "lastNameRequired": "Last name *",
+      "company": "Company",
+      "address": "Address",
+      "addressPlaceholder": "Street, house number, postal code, city, country",
+      "email": "E-mail",
+      "emailRequired": "E-mail *",
+      "message": "Message",
+      "messageRequired": "Message *",
+      "send": "Send",
+      "spamProtection": "Spam protection: Required fields are marked with *",
+      "messageSent": "Message sent",
+      "messageDescription": "Thank you for your inquiry. We will get back to you promptly."
+    },
+    "location": {
+      "title": "Location",
+      "subtitle": "Visit us on-site",
+      "address": "Postal address",
+      "openMaps": "Open in Google Maps"
+    },
+    "details": {
+      "title": "Contact Details",
+      "phone": "Phone",
+      "fax": "Fax",
+      "email": "E-mail"
+    },
+    "hours": {
+      "title": "Opening Hours",
+      "weekdays": "Mon-Fri:",
+      "time": "8:00 AM - 5:00 PM"
+    },
+    "hotline": {
+      "title": "Service Hotline",
+      "time": "Mon-Fri: 8:00 AM - 5:00 PM"
+    },
+    "why": {
+      "title": "Why Alphaweld?",
+      "items": [
+        "• Over 30 years of experience in welding technology",
+        "• Individual consultation and customized solutions", 
+        "• Fast delivery times and reliable service",
+        "• High-quality products for professional applications"
+      ]
+    },
+    "response": {
+      "title": "Quick Response",
+      "description": "We respond to all inquiries within 24 hours.",
+      "urgent": "For urgent technical questions, you can reach us directly via our service hotline.",
+      "emergency": "Emergency Support:",
+      "emergencyDesc": "For critical production failures"
+    },
+    "consultation": "Need individual consultation?",
+    "consultationText": "Our expert team supports you in selecting the optimal welding solution for your specific requirements."
+  },
+  "news": {
+    "title": "News & Updates",
+    "subtitle": "Stay updated on product innovations, events and company news",
+    "categories": {
+      "all": "All",
+      "products": "Product News",
+      "events": "Events",
+      "company": "Company",
+      "education": "Education",
+      "digital": "Digital"
+    },
+    "readMore": "Read more",
+    "loadMore": "Load more news",
+    "imageLoading": "Image loading..."
+  },
+  "search": {
+    "title": "Search Results",
+    "placeholder": "Search products...",
+    "searching": "Searching...",
+    "results": "result",
+    "resultsPlural": "results",
+    "found": "Found products:",
+    "noResults": "No products found. Try different search terms.",
+    "searchTitle": "Product Search",
+    "searchDescription": "Enter a search term to browse our products.",
+    "searchPlaceholder": "Product name, article number or description...",
+    "highlights": "Highlights:"
+  },
+  "productCategories": {
+    "title": "Our Product Categories",
+    "subtitle": "Discover our comprehensive range of high-quality welding products and safety equipment for professional applications.",
+    "cta": {
+      "title": "Need individual consultation?",
+      "description": "Our expert team supports you in selecting the optimal welding solution for your specific requirements.",
+      "consult": "Get consultation now",
+      "catalog": "Request catalog"
+    },
+    "categories": {
+      "migmag": {
+        "title": "MIG/MAG Torches",
+        "description": "High-quality welding torches for professional applications"
+      },
+      "wig": {
+        "title": "TIG Torches",
+        "description": "Precise TIG torches for demanding welding work"
+      },
+      "plasma": {
+        "title": "Plasma Torches", 
+        "description": "Modern plasma technology for clean cuts"
+      },
+      "machines": {
+        "title": "Welding Machines",
+        "description": "Reliable welding systems for every application"
+      },
+      "safety": {
+        "title": "Safety Equipment",
+        "description": "Protective equipment of the highest quality"
+      },
+      "tungsten": {
+        "title": "Tungsten Electrodes",
+        "description": "Precision electrodes for optimal welding results"
+      }
+    }
+  },
+  "products": {
+    "title": "Products",
+    "subtitle": "Discover our comprehensive range of high-quality welding products",
+    "categories": {
+      "migmag": "MIG/MAG Torches",
+      "wig": "TIG Torches", 
+      "plasma": "Plasma Torches",
+      "machines": "Welding Machines",
+      "safety": "Safety Equipment",
+      "tungsten": "Tungsten Electrodes",
+      "grinding": "Tungsten Grinder"
+    },
+    "details": "View Details",
+    "request": "Request Product",
+    "downloadSheet": "Download Datasheet",
+    "consultation": "Free Consultation",
+    "technicalSpecs": "Technical Specifications",
+    "explosionDrawing": "Explosion Drawing",
+    "imageGallery": "Image Gallery",
+    "downloads": "Downloads",
+    "backToOverview": "Back to Overview",
+    "highlights": "Product Highlights",
+    "technicalData": "Technical data according to EN 60 974-7:",
+    "property": "Property",
+    "value": "Value",
+    "notFound": "Product not found",
+    "notFoundText": "The requested product could not be found.",
+    "backToProducts": "Back to Products",
+    "categoryNotFound": "Category not found", 
+    "categoryNotFoundText": "The requested product category could not be found.",
+    "questionsCta": "Do you have questions about this product?",
+    "questionsText": "Our experts are happy to advise you on selecting the right welding technology for your specific requirements.",
+    "contactForm": "Contact Form",
+    "downloadTypes": {
+      "datasheet": "Datasheet", 
+      "manual": "Operating Manual",
+      "explosion": "Explosion Drawing"
+    },
+    "explosionText": "Detailed explosion drawing for",
+    "downloadDrawing": "Download Drawing"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "notFound": "Not found",
+    "search": "Search...",
+    "readMore": "Learn more",
+    "contact": "Contact us", 
+    "requestConsultation": "Get consultation now",
+    "requestCatalog": "Request catalog",
+    "openMaps": "Open in Google Maps"
+  },
+  "footer": {
+    "company": "Welding Technology & Safety Equipment",
+    "description": "Your competent partner for high-quality welding technology, welding torches, welding machines and safety equipment. Quality, innovation and reliability for years.",
+    "quickLinks": "Quick Links",
+    "contact": "Contact",
+    "hotline": "Service Hotline",
+    "hours": "Mon-Fri: 8:00 AM - 5:00 PM",
+    "copyright": "© 2024 Alphaweld GmbH. All rights reserved.",
+    "legal": {
+      "imprint": "Imprint",
+      "privacy": "Privacy Policy", 
+      "terms": "Terms & Conditions"
+    }
+  },
+  "breadcrumb": {
+    "home": "Home",
+    "products": "Products"
+  },
+  "maps": {
+    "company": "Alphaweld GmbH",
+    "address": "Geisweider Str. 130, 57078 Siegen", 
+    "open": "Open"
+  }
+}
