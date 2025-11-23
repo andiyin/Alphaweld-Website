@@ -9,7 +9,7 @@ const HeroSection = () => {
 
   const slides = [
     {
-      image: "/lovable-uploads/2890bddb-14c9-4356-9ef2-cdaad5887d85.png",
+      image: "/herosection-slideshow-uploads/buehne_schweisstisch_01.png",
       title: "SCHWEISSTISCH",
       subtitle: "Fahrbare Lenkrollen & Pneumatische Absenkfunktion",
       description: "Große Arbeitsfläche 80x60cm, kompakte Bauform 100x70cm, robustes Metallgestell - ideal zum Vorführschweißen.",
@@ -17,7 +17,7 @@ const HeroSection = () => {
       link: "/products/equipment"
     },
     {
-      image: "/lovable-uploads/73735c92-654e-44f7-8bc3-75ae1f977ba8.png",
+      image: "/herosection-slideshow-uploads/buehne_mobilMIG-250_01.png",
       title: "MOBILMIG-250",
       subtitle: "Kompakte Bauform & 4-Rollen Drahtantrieb",
       description: "Stufenlose Spannungsregelung und Drahtvorschubgeschwindigkeit mit automatischer Drahtrückbrandregelung.",
@@ -25,7 +25,7 @@ const HeroSection = () => {
       link: "/products/machines"
     },
     {
-      image: "/lovable-uploads/ea483ed7-7884-4bf6-8cdd-decf914adff2.png",
+      image: "/herosection-slideshow-uploads/buehne_brenner_01.png",
       title: "SCHWEISSBRENNER",
       subtitle: "Für jeden eine optimale Lösung",
       description: "Aus unserer langjährigen Erfahrung und Zuverlässigkeit - hochwertige Schweißbrenner für professionelle Anwendungen.",
@@ -33,7 +33,7 @@ const HeroSection = () => {
       link: "/products/torches"
     },
     {
-      image: "/lovable-uploads/ee8d0dd7-081d-48c0-a478-a164baf93dba.png",
+      image: "/herosection-slideshow-uploads/buehne_b.png",
       title: "ALPHAFORCE",
       subtitle: "Breite Produktpalette hochwertiger Schweißgeräte",
       description: "Für Industrie-, Handwerk- und Montagebereich - moderne Schweißtechnik in verschiedenen Leistungsklassen.",
@@ -41,15 +41,7 @@ const HeroSection = () => {
       link: "/products/alphaforce"
     },
     {
-      image: "/lovable-uploads/c130a5f9-172a-4bb6-8b27-b25bb1b24901.png",
-      title: "WOLFRAMELEKTRODEN",
-      subtitle: "Hervorragende Zündeigenschaften & stabiler Lichtbogen",
-      description: "Lange Standzeiten für professionelle WIG-Schweißarbeiten in verschiedenen Ausführungen und Größen.",
-      cta: t('hero.cta1'),
-      link: "/products/electrodes"
-    },
-    {
-      image: "/lovable-uploads/d5baef27-480d-4e81-a82b-63ba4c102335.png",
+      image: "/herosection-slideshow-uploads/buehne_helme.png",
       title: "AUTOMATIKSCHUTZHELME",
       subtitle: "Black Star Pro - Großes Sichtfeld 100x60mm",
       description: "4 Lichtsensoren, einstellbare Schleiffunktion, auswechselbare Lithium-Batterie für maximalen Schutz.",
