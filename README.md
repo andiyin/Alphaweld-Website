@@ -1,4 +1,4 @@
-# Currently building a new Website for Alphaweld GmbH (SME, welding)
+# Currently building a new Website for Alphaweld GmbH (SME, Welding)
 
 You can view the current development status here:
 **[https://alphaweld-website.vercel.app/](https://alphaweld-website.vercel.app/)**
