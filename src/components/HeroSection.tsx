@@ -66,7 +66,7 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="relative h-[600px] md:h-[700px] lg:h-[800px] overflow-hidden">
+    <section className="relative h-[400px] md:h-[500px] lg:h-[600px] overflow-hidden">
       {/* Slides */}
       {slides.map((slide, index) => (
         <div

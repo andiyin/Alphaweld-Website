@@ -4,7 +4,7 @@ import { Menu, X, Search, Phone, Globe } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useTranslation } from "react-i18next";
-import alphaweldLogo from "@/assets/alphaweld-logo-new.png";
+import alphaweldLogo from "@/assets/logo.png";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
