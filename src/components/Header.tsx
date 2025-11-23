@@ -79,7 +79,7 @@ const Header = () => {
         </div>
 
         {/* Main Navigation */}
-        <div className="flex items-center justify-between py-4">
+        <div className="relative flex items-center py-4">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3">
             <img 
@@ -89,8 +89,8 @@ const Header = () => {
             />
           </Link>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center space-x-8">
+          {/* Desktop Navigation - Absolutely Centered */}
+          <nav className="hidden lg:flex items-center space-x-8 absolute left-1/2 -translate-x-1/2">
             {navigation.map((item) => (
               <div key={item.name} className="relative group">
                 <Link
@@ -119,7 +119,7 @@ const Header = () => {
           </nav>
 
           {/* Search & Mobile Menu */}
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-4 ml-auto">
             {/* Search */}
             <div className="hidden md:block">
               {isSearchOpen ? (
