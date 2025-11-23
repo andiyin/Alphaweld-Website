@@ -87,10 +87,6 @@ const Header = () => {
               alt="Alphaweld GmbH" 
               className="h-12 w-auto"
             />
-            <div className="hidden sm:block">
-              <h1 className="text-xl font-bold text-foreground">Alphaweld</h1>
-              <p className="text-xs text-muted-foreground">Schweißtechnik</p>
-            </div>
           </Link>
 
           {/* Desktop Navigation */}
