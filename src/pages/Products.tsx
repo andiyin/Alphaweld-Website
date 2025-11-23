@@ -80,7 +80,7 @@ const Products = () => {
         {productCategories.slice(0, 4).map((category) => (
           <Card key={category.id} className="group hover:shadow-industrial transition-all duration-300 hover:-translate-y-1 overflow-hidden">
             <CardContent className="p-0">
-              <Link to={`/products/${category.id}`} className="block">
+              <Link to={category.link} className="block">
                       <div className={`relative bg-gradient-to-br ${category.gradient} aspect-square flex items-center justify-center p-8`}>
                         <img 
                           src={category.image} 

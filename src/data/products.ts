@@ -317,5 +317,19 @@ export const productCategories: ProductCategory[] = [
         articleNumber: 'BSP-001'
       }
     ]
+  },
+  {
+    id: 'machines',
+    name: 'Schweißmaschinen',
+    description: 'Hochwertige Schweißmaschinen für professionelle Anwendungen',
+    image: '/lovable-uploads/2890bddb-14c9-4356-9ef2-cdaad5887d85.png',
+    products: []
+  },
+  {
+    id: 'tungsten',
+    name: 'Wolframelektroden',
+    description: 'Hervorragende Zündeigenschaften & stabiler Lichtbogen für professionelle WIG-Schweißarbeiten',
+    image: '/lovable-uploads/c130a5f9-172a-4bb6-8b27-b25bb1b24901.png',
+    products: []
   }
 ];
