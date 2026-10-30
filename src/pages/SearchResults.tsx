@@ -2,12 +2,8 @@ import { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import Layout from "@/components/Layout";
 import Breadcrumb from "@/components/Breadcrumb";
-import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { Input } from "@/components/ui/input";
-import { Search, ArrowLeft } from "lucide-react";
-import { Link } from "react-router-dom";
+import ProductCard from "@/components/ProductCard";
+import { Search, ArrowRight } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { productCategories, Product } from "@/data/products";
 
@@ -81,6 +77,15 @@ const SearchResults = () => {
     }
   }, []);
 
+  // Pick up new queries submitted from the header while already on this page
+  useEffect(() => {
+    const q = searchParams.get('q') || '';
+    if (q !== searchQuery) {
+      setSearchQuery(q);
+      searchProducts(q);
+    }
+  }, [searchParams]);
+
   const breadcrumbItems = [
     { label: t('breadcrumb.home'), href: '/' },
     { label: 'Suchergebnisse' }
@@ -88,144 +93,75 @@ const SearchResults = () => {
 
   return (
     <Layout>
-      <div className="min-h-screen bg-background">
-        {/* Hero Section */}
-        <section className="bg-gradient-secondary text-white py-16">
-          <div className="container mx-auto px-4">
-            <div className="max-w-4xl mx-auto">
-              <Breadcrumb items={breadcrumbItems} />
-              <h1 className="text-4xl md:text-5xl font-bold mb-6">Suchergebnisse</h1>
-              
-              {/* Search Form */}
-              <form onSubmit={handleSearchSubmit} className="max-w-2xl mx-auto">
-                <div className="relative">
-                  <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
-                  <Input
-                    type="text"
-                    placeholder="Produkte durchsuchen..."
-                    value={searchQuery}
-                    onChange={handleSearchChange}
-                    className="pl-10 pr-4 py-3 text-lg bg-white/10 border-white/20 text-white placeholder:text-white/70 focus:bg-white/20"
-                  />
-                </div>
-              </form>
+      <section className="border-b border-line">
+        <div className="container pb-12 pt-10 md:pb-16 md:pt-14">
+          <Breadcrumb items={breadcrumbItems} />
+          <h1 className="eyebrow mt-14 flex items-center gap-3 text-ink/55 md:mt-24">
+            <span className="h-px w-6 bg-amber" aria-hidden="true" />
+            Suchergebnisse
+          </h1>
+          <form onSubmit={handleSearchSubmit} className="mt-8 flex items-center gap-4 border-b border-ink pb-4" role="search">
+            <Search className="h-6 w-6 shrink-0 text-ink/35" />
+            <input
+              type="search"
+              placeholder="Produkte durchsuchen..."
+              aria-label="Produkte durchsuchen..."
+              value={searchQuery}
+              onChange={handleSearchChange}
+              className="w-full bg-transparent font-display text-[clamp(2rem,5vw,4rem)] leading-none text-ink placeholder:text-ink/25 focus:outline-none"
+            />
+            <button type="submit" className="flex h-12 w-12 shrink-0 items-center justify-center bg-ink text-paper transition-colors hover:bg-ink-soft" aria-label="Suchen">
+              <ArrowRight className="h-4 w-4" />
+            </button>
+          </form>
+        </div>
+      </section>
+
+      <section className="py-16 md:py-24">
+        <div className="container">
+          {isSearching ? (
+            <div className="flex items-center gap-4 py-12" role="status">
+              <span className="h-px w-16 origin-left animate-pulse bg-ink" aria-hidden="true" />
+              <p className="eyebrow text-ink/60">Suche läuft...</p>
             </div>
-          </div>
-        </section>
-
-        {/* Search Results */}
-        <section className="py-16">
-          <div className="container mx-auto px-4">
-            {isSearching ? (
-              <div className="text-center py-12">
-                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto mb-4"></div>
-                <p className="text-muted-foreground">Suche läuft...</p>
-              </div>
-            ) : searchQuery ? (
-              <>
-                <div className="mb-8">
-                  <h2 className="text-2xl font-bold mb-2">
-                    {searchResults.length} Ergebnis{searchResults.length !== 1 ? 'se' : ''} für "{searchQuery}"
-                  </h2>
-                  <p className="text-muted-foreground">
-                    {searchResults.length > 0 
-                      ? 'Gefundene Produkte:' 
-                      : 'Keine Produkte gefunden. Versuchen Sie andere Suchbegriffe.'
-                    }
-                  </p>
-                </div>
-
-                {searchResults.length > 0 && (
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {searchResults.map((product) => {
-                      const category = productCategories.find(cat => cat.id === product.categoryId);
-                      return (
-                        <Card key={product.id} className="group hover:shadow-industrial transition-all duration-300 hover:-translate-y-1 overflow-hidden">
-                          <CardContent className="p-0">
-                            {/* Product Image */}
-                            <div className="relative bg-gradient-to-br from-muted/30 to-muted/50 aspect-square flex items-center justify-center p-8">
-                              <img 
-                                src={product.image} 
-                                alt={product.name}
-                                className="max-w-full max-h-full object-contain group-hover:scale-105 transition-transform duration-300"
-                              />
-                              <Badge className="absolute top-4 right-4 bg-primary text-primary-foreground">
-                                {product.articleNumber}
-                              </Badge>
-                              <Badge variant="secondary" className="absolute top-4 left-4 bg-white/90 text-foreground">
-                                {category?.name}
-                              </Badge>
-                            </div>
-
-                            {/* Product Info */}
-                            <div className="p-6">
-                              <h3 className="text-xl font-bold text-foreground mb-2">{product.name}</h3>
-                              <p className="text-muted-foreground mb-4 line-clamp-2">{product.shortDescription}</p>
-                              
-                              {/* Key Features */}
-                              <div className="mb-4">
-                                <h4 className="text-sm font-semibold text-foreground mb-2">Highlights:</h4>
-                                <div className="flex flex-wrap gap-1">
-                                  {product.features.slice(0, 2).map((feature, index) => (
-                                    <span key={index} className="px-2 py-1 text-xs bg-accent text-accent-foreground rounded-md">
-                                      {feature}
-                                    </span>
-                                  ))}
-                                </div>
-                              </div>
-
-                              {/* Key Specs */}
-                              <div className="mb-6">
-                                <div className="space-y-1 text-sm">
-                                  {product.technicalSpecs.slice(0, 2).map((spec, index) => (
-                                    <div key={index} className="flex justify-between">
-                                      <span className="text-muted-foreground">{spec.property}:</span>
-                                      <span className="text-foreground font-medium">{spec.value}</span>
-                                    </div>
-                                  ))}
-                                </div>
-                              </div>
-
-                              {/* Action Button */}
-                              <Button asChild className="w-full" variant="cta">
-                                <Link to={`/products/${product.id}`}>
-                                  {t('products.details')}
-                                </Link>
-                              </Button>
-                            </div>
-                          </CardContent>
-                        </Card>
-                      );
-                    })}
-                  </div>
-                )}
-              </>
-            ) : (
-              <div className="text-center py-12">
-                <Search className="h-16 w-16 text-muted-foreground mx-auto mb-4" />
-                <h2 className="text-2xl font-bold mb-2">Produktsuche</h2>
-                <p className="text-muted-foreground mb-6">
-                  Geben Sie einen Suchbegriff ein, um unsere Produkte zu durchsuchen.
+          ) : searchQuery ? (
+            <>
+              <div className="mb-14 flex flex-col gap-3 border-b border-line pb-8 md:flex-row md:items-baseline md:justify-between">
+                <h2 className="display-sm text-ink">
+                  {searchResults.length} Ergebnis{searchResults.length !== 1 ? 'se' : ''} für „{searchQuery}"
+                </h2>
+                <p className="text-[0.9375rem] text-muted-foreground">
+                  {searchResults.length > 0
+                    ? 'Gefundene Produkte:'
+                    : 'Keine Produkte gefunden. Versuchen Sie andere Suchbegriffe.'
+                  }
                 </p>
-                <div className="max-w-md mx-auto">
-                  <form onSubmit={handleSearchSubmit}>
-                    <div className="relative">
-                      <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
-                      <Input
-                        type="text"
-                        placeholder="Produktname, Artikelnummer oder Beschreibung..."
-                        value={searchQuery}
-                        onChange={handleSearchChange}
-                        className="pl-10"
-                      />
-                    </div>
-                  </form>
-                </div>
               </div>
-            )}
-          </div>
-        </section>
-      </div>
+
+              {searchResults.length > 0 && (
+                <ul className="grid grid-cols-1 gap-x-8 gap-y-16 sm:grid-cols-2 lg:grid-cols-3">
+                  {searchResults.map((product) => {
+                    const category = productCategories.find(cat => cat.id === product.categoryId);
+                    return (
+                      <li key={product.id}>
+                        <ProductCard product={product} categoryLabel={category?.name} />
+                      </li>
+                    );
+                  })}
+                </ul>
+              )}
+            </>
+          ) : (
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-12">
+              <h2 className="display-md text-ink md:col-span-5">Produktsuche</h2>
+              <p className="lede md:col-span-5 md:col-start-8">
+                Geben Sie einen Suchbegriff ein, um unsere Produkte zu durchsuchen.
+                <span className="mt-2 block text-[0.9375rem] text-ink/40">Produktname, Artikelnummer oder Beschreibung...</span>
+              </p>
+            </div>
+          )}
+        </div>
+      </section>
     </Layout>
   );
 };

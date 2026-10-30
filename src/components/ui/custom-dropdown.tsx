@@ -123,11 +123,11 @@ const CustomDropdown: React.FC<CustomDropdownProps> = ({
         onKeyDown={handleKeyDown}
         disabled={disabled}
         className={cn(
-          "flex h-10 w-full items-center justify-between rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background",
-          "placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2",
+          "flex h-12 w-full items-center justify-between rounded-[var(--radius)] border border-line-strong bg-white px-4 py-2 text-base md:text-[0.9375rem] text-ink",
+          "hover:border-ink/40 focus:outline-none focus-visible:border-ink",
           "disabled:cursor-not-allowed disabled:opacity-50",
           "transition-all duration-200",
-          isOpen && "ring-2 ring-ring ring-offset-2",
+          isOpen && "border-ink",
           required && !value && "border-destructive focus:ring-destructive"
         )}
         aria-haspopup="listbox"
@@ -151,7 +151,7 @@ const CustomDropdown: React.FC<CustomDropdownProps> = ({
 
       {/* Dropdown List */}
       {isOpen && (
-        <div className="absolute top-full left-0 right-0 z-50 mt-1 max-h-60 overflow-auto rounded-md border bg-popover text-popover-foreground shadow-md animate-in fade-in-0 zoom-in-95 slide-in-from-top-2">
+        <div className="absolute top-full left-0 right-0 z-50 mt-1 max-h-60 overflow-auto rounded-[var(--radius)] border border-ink/15 bg-white text-ink shadow-[0_12px_32px_-16px_hsl(var(--ink)/0.25)] animate-in fade-in-0 slide-in-from-top-1">
           {options.map((option, index) => {
             const isSelected = option.value === value;
             const isFocused = index === focusedIndex;
@@ -162,17 +162,17 @@ const CustomDropdown: React.FC<CustomDropdownProps> = ({
                 onClick={() => handleOptionClick(option.value)}
                 onMouseEnter={() => setFocusedIndex(index)}
                 className={cn(
-                  "relative flex w-full cursor-pointer items-center rounded-sm py-2.5 px-3 text-sm outline-none transition-colors",
-                  "hover:bg-accent hover:text-accent-foreground",
-                  isFocused && "bg-accent text-accent-foreground",
-                  isSelected && "bg-primary/5 text-primary font-medium"
+                  "relative flex w-full cursor-pointer items-center py-3 px-4 text-[0.9375rem] outline-none transition-colors",
+                  "hover:bg-stone",
+                  isFocused && "bg-stone",
+                  isSelected && "font-medium"
                 )}
                 role="option"
                 aria-selected={isSelected}
               >
                 <span className="flex-1 truncate">{option.label}</span>
                 {isSelected && (
-                  <Check className="h-4 w-4 text-primary ml-2 flex-shrink-0" />
+                  <Check className="h-4 w-4 text-ink ml-2 flex-shrink-0" />
                 )}
               </div>
             );

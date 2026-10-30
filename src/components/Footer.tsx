@@ -1,200 +1,103 @@
 import { Link } from "react-router-dom";
-import { Phone, Mail, MapPin } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import alphaweldLogo from "@/assets/logo.png";
 import { useTranslation } from "react-i18next";
+import alphaweldLogo from "@/assets/logo.png";
 
 const Footer = () => {
   const { t } = useTranslation();
-  
+
+  const quickLinks = [
+    { name: t("nav.products"), href: "/products" },
+    { name: t("nav.news"), href: "/news" },
+    { name: t("nav.about"), href: "/about" },
+    { name: t("nav.contact"), href: "/contact" },
+  ];
+
+  const legalLinks = [
+    { name: t("footer.legal.imprint"), href: "/impressum" },
+    { name: t("footer.legal.privacy"), href: "/datenschutz" },
+    { name: t("footer.legal.terms"), href: "/agb" },
+  ];
+
   return (
-    <footer className="bg-gradient-industrial text-white">
-      <div className="container mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {/* Company Info */}
-          <div className="lg:col-span-2">
-            <div className="flex items-center gap-3 mb-6">
-              <img 
-                src={alphaweldLogo} 
-                alt="Alphaweld GmbH" 
-                className="h-12 w-auto filter brightness-0 invert"
-              />
-              <div>
-                <h3 className="text-xl font-bold">Alphaweld GmbH</h3>
-                <p className="text-white/80">{t('footer.company')}</p>
-              </div>
+    <footer className="border-t border-line bg-stone">
+      <div className="container">
+        <div className="grid grid-cols-1 gap-12 py-16 md:grid-cols-12 md:gap-8 md:py-24">
+          {/* Company */}
+          <div className="md:col-span-12 lg:col-span-5">
+            <Link to="/" className="inline-block" aria-label="Alphaweld GmbH">
+              <img src={alphaweldLogo} alt="Alphaweld GmbH" className="h-11 w-auto" />
+            </Link>
+            <div className="mt-8 flex items-baseline gap-3">
+              <span className="text-[0.9375rem] font-medium text-ink">Alphaweld GmbH</span>
+              <span className="h-px w-6 translate-y-[-4px] bg-ink/25" aria-hidden="true" />
+              <span className="text-[0.9375rem] text-ink/60">{t("footer.company")}</span>
             </div>
-            <p className="text-white/90 mb-6 leading-relaxed">
-              {t('footer.description')}
+            <p className="mt-4 max-w-md text-[0.9375rem] leading-relaxed text-muted-foreground">
+              {t("footer.description")}
             </p>
-            
           </div>
 
-          {/* Quick Links */}
-          <div>
-            <h4 className="font-semibold mb-4">{t('footer.quickLinks')}</h4>
-            <ul className="space-y-2">
-              <li><Link to="/products" className="text-white/80 hover:text-primary transition-colors">{t('nav.products')}</Link></li>
-              <li><Link to="/news" className="text-white/80 hover:text-primary transition-colors">{t('nav.news')}</Link></li>
-              <li><Link to="/about" className="text-white/80 hover:text-primary transition-colors">{t('nav.about')}</Link></li>
-              <li><Link to="/contact" className="text-white/80 hover:text-primary transition-colors">{t('nav.contact')}</Link></li>
+          {/* Quick links */}
+          <div className="md:col-span-4 lg:col-span-2">
+            <h2 className="eyebrow text-ink/50">{t("footer.quickLinks")}</h2>
+            <ul className="mt-6 space-y-3">
+              {quickLinks.map((link) => (
+                <li key={link.href}>
+                  <Link to={link.href} className="link-draw text-[0.9375rem] text-ink/80 hover:text-ink">
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
-          {/* Contact Info */}
-          <div>
-            <h4 className="font-semibold mb-4">{t('footer.contact')}</h4>
-            <div className="space-y-3">
-              <div className="flex items-start gap-3">
-                <MapPin className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
-                <div className="text-white/80">
-                  <p>Geisweider Str. 130</p>
-                  <p>D-57078 Siegen</p>
-                </div>
-              </div>
-              
-              <div className="flex items-center gap-3">
-                <Phone className="h-5 w-5 text-primary flex-shrink-0" />
-                <div>
-                  <p className="text-white/80">Tel: +49 (0)271 317897-0</p>
-                  <p className="text-white/80">Fax: +49 (0)271 317897-29</p>
-                </div>
-              </div>
-              
-              <div className="flex items-center gap-3">
-                <Mail className="h-5 w-5 text-primary flex-shrink-0" />
-                <a 
-                  href="mailto:welding@alphaweld.de" 
-                  className="text-white/80 hover:text-primary transition-colors"
+          {/* Contact */}
+          <div className="md:col-span-4 lg:col-span-2">
+            <h2 className="eyebrow text-ink/50">{t("footer.contact")}</h2>
+            <address className="mt-6 space-y-4 text-[0.9375rem] not-italic leading-relaxed text-ink/80">
+              <p>
+                Geisweider Str. 130
+                <br />
+                D-57078 Siegen
+              </p>
+              <p>
+                Tel: +49 (0)271 317897-0
+                <br />
+                Fax: +49 (0)271 317897-29
+              </p>
+              <a href="mailto:welding@alphaweld.de" className="link-draw inline-block text-ink hover:text-ink">
+                welding@alphaweld.de
+              </a>
+            </address>
+          </div>
+
+          {/* Hotline */}
+          <div className="md:col-span-4 lg:col-span-3">
+            <h2 className="eyebrow text-ink/50">{t("footer.hotline")}</h2>
+            <div className="mt-6 border-l-2 border-amber pl-5">
+              <a href="tel:+492713178970" className="block font-display text-[1.875rem] leading-tight text-ink">
+                +49 (0)271 317897-0
+              </a>
+              <p className="mt-2 text-sm text-muted-foreground">{t("footer.hours")}</p>
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom bar */}
+        <div className="flex flex-col-reverse gap-4 border-t border-line-strong/60 py-7 md:flex-row md:items-center md:justify-between">
+          <p className="font-mono text-[0.6875rem] tracking-[0.06em] text-ink/50">{t("footer.copyright")}</p>
+          <ul className="flex flex-wrap gap-x-7 gap-y-2">
+            {legalLinks.map((link) => (
+              <li key={link.href}>
+                <Link
+                  to={link.href}
+                  className="font-mono text-[0.6875rem] uppercase tracking-[0.12em] text-ink/60 transition-colors hover:text-ink"
                 >
-                  welding@alphaweld.de
-                </a>
-              </div>
-            </div>
-
-            {/* Hotline */}
-            <div className="mt-6 p-4 bg-primary/20 rounded-lg">
-              <h5 className="font-semibold text-primary mb-2">{t('footer.hotline')}</h5>
-              <p className="text-lg font-bold">+49 (0)271 317897-0</p>
-              <p className="text-sm text-white/80">{t('footer.hours')}</p>
-            </div>
-          </div>
-        </div>
-
-        {/* Bottom Section */}
-        <div className="border-t border-white/20 mt-8 pt-8">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <div className="flex flex-wrap gap-6 text-sm text-white/80">
-              <Link to="/impressum" className="hover:text-primary transition-colors">{t('footer.legal.imprint')}</Link>
-              <Link to="/datenschutz" className="hover:text-primary transition-colors">{t('footer.legal.privacy')}</Link>
-              <Link to="/agb" className="hover:text-primary transition-colors">{t('footer.legal.terms')}</Link>
-              
-            </div>
-          </div>
-          
-          <div className="text-center mt-4">
-            <p className="text-sm text-white/60">
-              {t('footer.copyright')}
-            </p>
-          </div>
-        </div>
-      </div>
-    </footer>
-  );
-  return (
-    <footer className="bg-gradient-industrial text-white">
-      <div className="container mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {/* Company Info */}
-          <div className="lg:col-span-2">
-            <div className="flex items-center gap-3 mb-6">
-              <img 
-                src={alphaweldLogo} 
-                alt="Alphaweld GmbH" 
-                className="h-12 w-auto filter brightness-0 invert"
-              />
-              <div>
-                <h3 className="text-xl font-bold">Alphaweld GmbH</h3>
-                <p className="text-white/80">Schweißtechnik & Arbeitsschutz</p>
-              </div>
-            </div>
-            <p className="text-white/90 mb-6 leading-relaxed">
-              Ihr kompetenter Partner für hochwertige Schweißtechnik, Schweißbrenner, 
-              Schweißmaschinen und Arbeitsschutzausrüstung. Qualität, Innovation und 
-              Zuverlässigkeit seit Jahren.
-            </p>
-            
-          </div>
-
-          {/* Quick Links */}
-          <div>
-            <h4 className="font-semibold mb-4">Quick Links</h4>
-            <ul className="space-y-2">
-              <li><Link to="/products" className="text-white/80 hover:text-primary transition-colors">Produkte</Link></li>
-              <li><Link to="/news" className="text-white/80 hover:text-primary transition-colors">News</Link></li>
-              <li><Link to="/about" className="text-white/80 hover:text-primary transition-colors">Über uns</Link></li>
-              <li><Link to="/contact" className="text-white/80 hover:text-primary transition-colors">Kontakt</Link></li>
-              <li><Link to="/downloads" className="text-white/80 hover:text-primary transition-colors">Downloads</Link></li>
-            </ul>
-          </div>
-
-          {/* Contact Info */}
-          <div>
-            <h4 className="font-semibold mb-4">Kontakt</h4>
-            <div className="space-y-3">
-              <div className="flex items-start gap-3">
-                <MapPin className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
-                <div className="text-white/80">
-                  <p>Geisweider Str. 130</p>
-                  <p>D-57078 Siegen</p>
-                </div>
-              </div>
-              
-              <div className="flex items-center gap-3">
-                <Phone className="h-5 w-5 text-primary flex-shrink-0" />
-                <div>
-                  <p className="text-white/80">Tel: +49 (0)271 317897-0</p>
-                  <p className="text-white/80">Fax: +49 (0)271 317897-29</p>
-                </div>
-              </div>
-              
-              <div className="flex items-center gap-3">
-                <Mail className="h-5 w-5 text-primary flex-shrink-0" />
-                <a 
-                  href="mailto:welding@alphaweld.de" 
-                  className="text-white/80 hover:text-primary transition-colors"
-                >
-                  welding@alphaweld.de
-                </a>
-              </div>
-            </div>
-
-            {/* Hotline */}
-            <div className="mt-6 p-4 bg-primary/20 rounded-lg">
-              <h5 className="font-semibold text-primary mb-2">Service Hotline</h5>
-              <p className="text-lg font-bold">+49 (0)271 317897-0</p>
-              <p className="text-sm text-white/80">Mo-Fr: 8:00 - 17:00 Uhr</p>
-            </div>
-          </div>
-        </div>
-
-        {/* Bottom Section */}
-        <div className="border-t border-white/20 mt-8 pt-8">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <div className="flex flex-wrap gap-6 text-sm text-white/80">
-              <Link to="/impressum" className="hover:text-primary transition-colors">Impressum</Link>
-              <Link to="/datenschutz" className="hover:text-primary transition-colors">Datenschutz</Link>
-              <Link to="/agb" className="hover:text-primary transition-colors">AGB</Link>
-              
-            </div>
-          </div>
-          
-          <div className="text-center mt-4">
-            <p className="text-sm text-white/60">
-              © 2024 Alphaweld GmbH. Alle Rechte vorbehalten.
-            </p>
-          </div>
+                  {link.name}
+                </Link>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </footer>

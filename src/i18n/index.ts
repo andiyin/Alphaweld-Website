@@ -33,4 +33,13 @@ i18n
     },
   });
 
+const syncHtmlLang = (lng: string) => {
+  if (typeof document !== 'undefined') {
+    document.documentElement.lang = lng.split('-')[0];
+  }
+};
+
+syncHtmlLang(i18n.language || 'de');
+i18n.on('languageChanged', syncHtmlLang);
+
 export default i18n;

@@ -1,221 +1,166 @@
-import Layout from "@/components/Layout";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Download, Shield, Leaf, Users, Target, TrendingUp } from "lucide-react";
+import { Link } from "react-router-dom";
+import { ArrowDown, ArrowRight } from "lucide-react";
 import { useTranslation } from "react-i18next";
+import Layout from "@/components/Layout";
+import PageHeader from "@/components/PageHeader";
+import { Button } from "@/components/ui/button";
 
 const About = () => {
   const { t } = useTranslation();
-  
+  const list = (key: string) => t(key, { returnObjects: true }) as string[];
+
+  const motto = t("about.motto")
+    .split(".")
+    .map((word) => word.trim())
+    .filter(Boolean);
+
+  const values = [
+    {
+      key: "quality",
+      title: t("about.values.quality.title"),
+      body: <p>{t("about.values.quality.description")}</p>,
+      items: list("about.values.quality.items"),
+      quote: t("about.values.quality.quote"),
+    },
+    {
+      key: "sustainability",
+      title: t("about.values.sustainability.title"),
+      body: (
+        <>
+          <p>{t("about.values.sustainability.description")}</p>
+          <p className="mt-6 font-medium text-ink">{t("about.values.sustainability.principles")}</p>
+        </>
+      ),
+      items: list("about.values.sustainability.items"),
+    },
+    {
+      key: "sourcing",
+      title: t("about.values.sourcing.title"),
+      kicker: t("about.values.sourcing.subtitle"),
+      body: <p>{t("about.values.sourcing.description")}</p>,
+      items: list("about.values.sourcing.items"),
+    },
+    {
+      key: "integrity",
+      title: t("about.values.integrity.title"),
+      body: <p>{t("about.values.integrity.description")}</p>,
+      items: list("about.values.integrity.items"),
+    },
+    {
+      key: "improvement",
+      title: t("about.values.improvement.title"),
+      body: <p>{t("about.values.improvement.description")}</p>,
+      items: list("about.values.improvement.items"),
+    },
+  ];
+
+  const downloads = [
+    { label: t("about.downloads.items.policy"), href: "/documents/Alphaweld_Lieferkettenpolitik.pdf" },
+    { label: t("about.downloads.items.sourcing"), href: "/documents/Alphaweld_Erklaerung_Rohstoffbeschaffung.pdf" },
+    { label: t("about.downloads.items.minerals"), href: "/documents/Alphaweld_Bericht_ueber_Konfliktmineralien_2024.pdf" },
+  ];
+
   return (
     <Layout>
-      <div className="min-h-screen bg-background">
-        {/* Hero Section */}
-        <section className="bg-gradient-secondary text-white py-20">
-          <div className="container mx-auto px-4">
-            <div className="max-w-4xl mx-auto text-center">
-              <h1 className="text-4xl md:text-5xl font-bold mb-6">{t('about.title')}</h1>
-              <h2 className="text-2xl md:text-3xl font-semibold mb-4 text-primary">
-                {t('about.subtitle')}
-              </h2>
-              <p className="text-xl mb-8 text-white/90">
-                {t('about.motto')}
-              </p>
-            </div>
-          </div>
-        </section>
+      <PageHeader
+        breadcrumb={[{ label: t("about.title") }]}
+        eyebrow={t("about.subtitle")}
+        title={t("about.title")}
+      />
 
-        {/* Introduction */}
-        <section className="py-16">
-          <div className="container mx-auto px-4">
-            <div className="max-w-4xl mx-auto">
-              <p className="text-lg text-muted-foreground leading-relaxed mb-12">
-                {t('about.intro')}
-              </p>
-            </div>
+      {/* Introduction */}
+      <section className="py-20 md:py-32">
+        <div className="container grid grid-cols-1 gap-12 md:grid-cols-12 md:gap-8">
+          <div className="md:col-span-4">
+            <ul className="space-y-3" aria-label={t("about.motto")}>
+              {motto.map((word) => (
+                <li key={word} className="flex items-center gap-4">
+                  <span className="h-px w-6 bg-amber" aria-hidden="true" />
+                  <span className="eyebrow text-ink">{word}.</span>
+                </li>
+              ))}
+            </ul>
           </div>
-        </section>
+          <p className="font-display text-[clamp(1.625rem,2.6vw,2.375rem)] leading-[1.25] text-ink md:col-span-8">
+            {t("about.intro")}
+          </p>
+        </div>
+      </section>
 
-        {/* Core Values */}
-        <section className="py-16 bg-muted/20">
-          <div className="container mx-auto px-4">
-            <div className="max-w-6xl mx-auto">
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                
-                {/* Quality */}
-                <Card className="shadow-elegant">
-                  <CardHeader>
-                    <div className="flex items-center gap-3 mb-4">
-                      <div className="p-3 bg-primary/10 rounded-lg">
-                        <Shield className="h-6 w-6 text-primary" />
-                      </div>
-                      <CardTitle className="text-xl">{t('about.values.quality.title')}</CardTitle>
-                    </div>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-muted-foreground mb-4">
-                      {t('about.values.quality.description')}
-                    </p>
-                    <ul className="list-disc list-inside space-y-2 text-sm text-muted-foreground">
-                      {(t('about.values.quality.items', { returnObjects: true }) as string[]).map((item: string, index: number) => (
-                        <li key={index}>{item}</li>
-                      ))}
-                    </ul>
-                    <blockquote className="mt-6 border-l-4 border-primary pl-4 text-sm italic">
-                      "{t('about.values.quality.quote')}"
+      {/* Values */}
+      <section className="pb-20 md:pb-32">
+        <div className="container">
+          <ol className="border-t border-ink">
+            {values.map((value, index) => (
+              <li key={value.key} className="grid grid-cols-1 gap-6 border-b border-line py-12 md:grid-cols-12 md:gap-8 md:py-16">
+                <div className="md:col-span-1">
+                  <span className="index-num text-ink/40">{String(index + 1).padStart(2, "0")}</span>
+                </div>
+                <div className="md:col-span-4">
+                  <h2 className="display-sm text-ink">{value.title}</h2>
+                  {value.kicker && <p className="eyebrow mt-4 text-ink/55">{value.kicker}</p>}
+                </div>
+                <div className="text-[1.0625rem] leading-relaxed text-muted-foreground md:col-span-7 lg:col-span-6 lg:col-start-7">
+                  {value.body}
+                  <ul className="mt-6 border-t border-line">
+                    {value.items.map((item) => (
+                      <li key={item} className="flex gap-4 border-b border-line py-3 text-[0.9375rem] text-ink/80">
+                        <span className="mt-[0.7em] h-px w-3 shrink-0 bg-ink/40" aria-hidden="true" />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                  {value.quote && (
+                    <blockquote className="mt-10 border-l-2 border-amber pl-6 font-display text-[1.5rem] italic leading-snug text-ink">
+                      “{value.quote}”
                     </blockquote>
-                  </CardContent>
-                </Card>
+                  )}
+                </div>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
 
-                {/* Sustainability */}
-                <Card className="shadow-elegant">
-                  <CardHeader>
-                    <div className="flex items-center gap-3 mb-4">
-                      <div className="p-3 bg-primary/10 rounded-lg">
-                        <Leaf className="h-6 w-6 text-primary" />
-                      </div>
-                      <CardTitle className="text-xl">{t('about.values.sustainability.title')}</CardTitle>
-                    </div>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-muted-foreground mb-4">
-                      {t('about.values.sustainability.description')}
-                    </p>
-                    <p className="font-semibold mb-3">{t('about.values.sustainability.principles')}</p>
-                    <ul className="list-disc list-inside space-y-2 text-sm text-muted-foreground">
-                      {(t('about.values.sustainability.items', { returnObjects: true }) as string[]).map((item: string, index: number) => (
-                        <li key={index}>{item}</li>
-                      ))}
-                    </ul>
-                  </CardContent>
-                </Card>
-
-                {/* Responsible Sourcing */}
-                <Card className="shadow-elegant">
-                  <CardHeader>
-                    <div className="flex items-center gap-3 mb-4">
-                      <div className="p-3 bg-primary/10 rounded-lg">
-                        <Target className="h-6 w-6 text-primary" />
-                      </div>
-                      <CardTitle className="text-xl">{t('about.values.sourcing.title')}</CardTitle>
-                    </div>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-muted-foreground mb-4">
-                      <strong>{t('about.values.sourcing.subtitle')}</strong>
-                    </p>
-                    <p className="text-sm mb-3">{t('about.values.sourcing.description')}</p>
-                    <ul className="list-disc list-inside space-y-2 text-sm text-muted-foreground">
-                      {(t('about.values.sourcing.items', { returnObjects: true }) as string[]).map((item: string, index: number) => (
-                        <li key={index}>{item}</li>
-                      ))}
-                    </ul>
-                  </CardContent>
-                </Card>
-
-                {/* Integrity */}
-                <Card className="shadow-elegant">
-                  <CardHeader>
-                    <div className="flex items-center gap-3 mb-4">
-                      <div className="p-3 bg-primary/10 rounded-lg">
-                        <Users className="h-6 w-6 text-primary" />
-                      </div>
-                      <CardTitle className="text-xl">{t('about.values.integrity.title')}</CardTitle>
-                    </div>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-muted-foreground mb-4">
-                      {t('about.values.integrity.description')}
-                    </p>
-                    <ul className="list-disc list-inside space-y-2 text-sm text-muted-foreground">
-                      {(t('about.values.integrity.items', { returnObjects: true }) as string[]).map((item: string, index: number) => (
-                        <li key={index}>{item}</li>
-                      ))}
-                    </ul>
-                  </CardContent>
-                </Card>
-
-                {/* Continuous Improvement */}
-                <Card className="shadow-elegant">
-                  <CardHeader>
-                    <div className="flex items-center gap-3 mb-4">
-                      <div className="p-3 bg-primary/10 rounded-lg">
-                        <TrendingUp className="h-6 w-6 text-primary" />
-                      </div>
-                      <CardTitle className="text-xl">{t('about.values.improvement.title')}</CardTitle>
-                    </div>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-muted-foreground mb-4">
-                      {t('about.values.improvement.description')}
-                    </p>
-                    <ul className="list-disc list-inside space-y-2 text-sm text-muted-foreground">
-                      {(t('about.values.improvement.items', { returnObjects: true }) as string[]).map((item: string, index: number) => (
-                        <li key={index}>{item}</li>
-                      ))}
-                    </ul>
-                  </CardContent>
-                </Card>
-              </div>
+      {/* Downloads */}
+      <section className="bg-stone py-20 md:py-28">
+        <div className="container grid grid-cols-1 gap-12 md:grid-cols-12 md:gap-8">
+          <div className="flex flex-col justify-between gap-10 md:col-span-5">
+            <h2 className="display-lg text-ink">{t("about.downloads.title")}</h2>
+            <div>
+              <p className="max-w-sm text-[0.9375rem] leading-relaxed text-muted-foreground">{t("about.downloads.footer")}</p>
+              <Button asChild size="lg" className="mt-8">
+                <Link to="/contact">
+                  {t("common.contact")}
+                  <ArrowRight className="group-hover/btn:translate-x-1" />
+                </Link>
+              </Button>
             </div>
           </div>
-        </section>
-
-        {/* Downloads Section */}
-        <section className="py-16">
-          <div className="container mx-auto px-4">
-            <div className="max-w-4xl mx-auto">
-              <h3 className="text-2xl font-bold mb-8 text-center">{t('about.downloads.title')}</h3>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <Card className="shadow-elegant hover:shadow-industrial transition-shadow">
-                  <CardContent className="p-6 text-center">
-                    <Download className="h-12 w-12 text-primary mx-auto mb-4" />
-                    <h4 className="font-semibold mb-2">{t('about.downloads.items.policy')}</h4>
-                    <Button variant="outline" className="w-full" asChild>
-                      <a href="/documents/Alphaweld_Lieferkettenpolitik.pdf" download>
-                        {t('about.downloads.download')}
-                      </a>
-                    </Button>
-                  </CardContent>
-                </Card>
-                
-                <Card className="shadow-elegant hover:shadow-industrial transition-shadow">
-                  <CardContent className="p-6 text-center">
-                    <Download className="h-12 w-12 text-primary mx-auto mb-4" />
-                    <h4 className="font-semibold mb-2">{t('about.downloads.items.sourcing')}</h4>
-                    <Button variant="outline" className="w-full" asChild>
-                      <a href="/documents/Alphaweld_Erklaerung_Rohstoffbeschaffung.pdf" download>
-                        {t('about.downloads.download')}
-                      </a>
-                    </Button>
-                  </CardContent>
-                </Card>
-                
-                <Card className="shadow-elegant hover:shadow-industrial transition-shadow">
-                  <CardContent className="p-6 text-center">
-                    <Download className="h-12 w-12 text-primary mx-auto mb-4" />
-                    <h4 className="font-semibold mb-2">{t('about.downloads.items.minerals')}</h4>
-                    <Button variant="outline" className="w-full" asChild>
-                      <a href="/documents/Alphaweld_Bericht_ueber_Konfliktmineralien_2024.pdf" download>
-                        {t('about.downloads.download')}
-                      </a>
-                    </Button>
-                  </CardContent>
-                </Card>
-              </div>
-              
-              <div className="text-center mt-12">
-                <p className="text-muted-foreground mb-4">
-                  {t('about.downloads.footer')}
-                </p>
-                <Button asChild>
-                  <a href="/contact">{t('common.contact')}</a>
-                </Button>
-              </div>
-            </div>
-          </div>
-        </section>
-      </div>
+          <ul className="self-start border-t border-ink md:col-span-7">
+            {downloads.map((doc, index) => (
+              <li key={doc.href}>
+                <a
+                  href={doc.href}
+                  download
+                  className="group flex items-center gap-6 border-b border-line-strong/70 py-7 transition-colors"
+                >
+                  <span className="index-num w-6 text-ink/40">{String(index + 1).padStart(2, "0")}</span>
+                  <span className="flex-1">
+                    <span className="block font-display text-[1.625rem] leading-tight text-ink">{doc.label}</span>
+                    <span className="mt-1 block font-mono text-[0.6875rem] uppercase tracking-[0.1em] text-ink/45">
+                      {t("about.downloads.download")}
+                    </span>
+                  </span>
+                  <span className="flex h-10 w-10 shrink-0 items-center justify-center border border-line-strong transition-colors duration-300 group-hover:border-ink group-hover:bg-ink">
+                    <ArrowDown className="h-4 w-4 text-ink transition-colors duration-300 group-hover:text-paper" />
+                  </span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
     </Layout>
   );
 };

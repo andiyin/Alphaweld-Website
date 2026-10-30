@@ -1,142 +1,106 @@
-import { Flame, Zap, Shield, Wrench, CircuitBoard, HardHat } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
 import { Link } from "react-router-dom";
+import { ArrowRight } from "lucide-react";
 import { useTranslation } from "react-i18next";
+import ConsultationCta from "./ConsultationCta";
 
 const ProductCategories = () => {
   const { t } = useTranslation();
-  
+
   const categories = [
     {
-      icon: Flame,
-      title: t('productCategories.categories.migmag.title'),
-      description: t('productCategories.categories.migmag.description'),
+      title: t("productCategories.categories.migmag.title"),
+      description: t("productCategories.categories.migmag.description"),
       products: ["AW-150", "AW-240", "AW-400", "AW-550"],
-      color: "text-primary",
-      link: "/products/migmag-brenner"
+      link: "/products/migmag-brenner",
     },
     {
-      icon: Zap,
-      title: t('productCategories.categories.wig.title'),
-      description: t('productCategories.categories.wig.description'),
+      title: t("productCategories.categories.wig.title"),
+      description: t("productCategories.categories.wig.description"),
       products: ["SR-9", "SR-17", "SR-26", "SR-18"],
-      color: "text-secondary",
-      link: "/products/wig-brenner"
+      link: "/products/wig-brenner",
     },
     {
-      icon: CircuitBoard,
-      title: t('productCategories.categories.plasma.title'),
-      description: t('productCategories.categories.plasma.description'),
+      title: t("productCategories.categories.plasma.title"),
+      description: t("productCategories.categories.plasma.description"),
       products: ["P-50", "P-70", "P-100", "P-130"],
-      color: "text-primary",
-      link: "/products/plasma-brenner"
+      link: "/products/plasma-brenner",
     },
     {
-      icon: Wrench,
-      title: t('productCategories.categories.machines.title'),
-      description: t('productCategories.categories.machines.description'),
+      title: t("productCategories.categories.machines.title"),
+      description: t("productCategories.categories.machines.description"),
       products: ["Elektrodeninverter", "WIG-Anlagen", "MIG/MAG", "Plasma"],
-      color: "text-secondary",
-      link: "/products/machines"
+      link: "/products/machines",
     },
     {
-      icon: HardHat,
-      title: t('productCategories.categories.safety.title'),
-      description: t('productCategories.categories.safety.description'),
+      title: t("productCategories.categories.safety.title"),
+      description: t("productCategories.categories.safety.description"),
       products: ["Black Star Pro", "Automatikhelme", "Handschuhe", "Schürzen"],
-      color: "text-primary",
-      link: "/products/arbeitsschutz"
+      link: "/products/arbeitsschutz",
     },
     {
-      icon: Shield,
-      title: t('productCategories.categories.tungsten.title'),
-      description: t('productCategories.categories.tungsten.description'),
+      title: t("productCategories.categories.tungsten.title"),
+      description: t("productCategories.categories.tungsten.description"),
       products: ["WP grün", "WC20 grau", "WL15 gold", "WT20 rot"],
-      color: "text-secondary",
-      link: "/products/tungsten"
-    }
+      link: "/products/tungsten",
+    },
   ];
 
   return (
-    <section className="py-16 bg-muted/30">
-      <div className="container mx-auto px-4">
-        {/* Section Header */}
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-            {t('productCategories.title')}
-          </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            {t('productCategories.subtitle')}
-          </p>
-        </div>
-
-        {/* Categories Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-          {categories.map((category, index) => {
-            const IconComponent = category.icon;
-            return (
-              <Link key={index} to={category.link} className="group block">
-                <Card className="hover:shadow-industrial hover:scale-105 transition-all duration-300 cursor-pointer h-full">
-                  <CardContent className="p-6 h-full">
-                    <div className="flex items-start space-x-4 h-full">
-                      <div className={`p-3 rounded-lg bg-gradient-to-br transition-all duration-300 ${
-                        category.color === 'text-primary' 
-                          ? 'from-primary/10 to-primary/20 group-hover:from-primary/20 group-hover:to-primary/30' 
-                          : 'from-secondary/10 to-secondary/20 group-hover:from-secondary/20 group-hover:to-secondary/30'
-                      }`}>
-                        <IconComponent className={`h-6 w-6 ${category.color} transition-transform duration-300 group-hover:scale-110`} />
-                      </div>
-                      <div className="flex-1 flex flex-col">
-                        <h3 className="text-xl font-semibold text-foreground mb-2 group-hover:text-primary transition-colors duration-300">
-                          {category.title}
-                        </h3>
-                        <p className="text-muted-foreground mb-4 flex-grow">
-                          {category.description}
-                        </p>
-                        <div className="flex flex-wrap gap-2 mb-4">
-                          {category.products.map((product, idx) => (
-                            <span 
-                              key={idx}
-                              className="px-2 py-1 text-xs bg-accent text-accent-foreground rounded-md group-hover:bg-primary/10 group-hover:text-primary transition-colors duration-300"
-                            >
-                              {product}
-                            </span>
-                          ))}
-                        </div>
-                        <div className="text-sm text-primary font-medium group-hover:text-primary-foreground group-hover:bg-primary px-3 py-2 rounded-md transition-all duration-300 text-center">
-                          {t('common.readMore')} →
-                        </div>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              </Link>
-            );
-          })}
-        </div>
-
-        {/* CTA Section */}
-        <div className="text-center">
-          <div className="bg-gradient-to-r from-primary/5 to-secondary/5 rounded-2xl p-8 md:p-12">
-            <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
-              {t('productCategories.cta.title')}
-            </h3>
-            <p className="text-lg text-muted-foreground mb-6 max-w-2xl mx-auto">
-              {t('productCategories.cta.description')}
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button variant="cta" size="lg">
-                {t('productCategories.cta.consult')}
-              </Button>
-              <Button variant="outline" size="lg">
-                {t('productCategories.cta.catalog')}
-              </Button>
+    <>
+      <section className="py-20 md:py-32">
+        <div className="container">
+          {/* Section header */}
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-12">
+            <div className="md:col-span-7">
+              <p className="eyebrow flex items-center gap-3 text-ink/55">
+                <span className="h-px w-6 bg-amber" aria-hidden="true" />
+                {t("nav.products")}
+              </p>
+              <h2 className="display-lg mt-6 text-ink">{t("productCategories.title")}</h2>
+            </div>
+            <div className="flex items-end md:col-span-5 lg:col-span-4 lg:col-start-9">
+              <p className="lede">{t("productCategories.subtitle")}</p>
             </div>
           </div>
+
+          {/* Index grid */}
+          <ul className="mt-14 grid grid-cols-1 border-l border-t border-line sm:grid-cols-2 md:mt-20 lg:grid-cols-3">
+            {categories.map((category, index) => (
+              <li key={category.link} className="border-b border-r border-line">
+                <Link
+                  to={category.link}
+                  className="group flex h-full min-h-[19rem] flex-col p-7 transition-colors duration-500 ease-refined hover:bg-stone md:p-9"
+                >
+                  <div className="flex items-center justify-between">
+                    <span className="index-num text-ink/40">{String(index + 1).padStart(2, "0")}</span>
+                    <span className="flex h-9 w-9 items-center justify-center border border-line transition-colors duration-500 group-hover:border-ink group-hover:bg-ink">
+                      <ArrowRight className="h-4 w-4 text-ink transition-colors duration-500 group-hover:text-paper" />
+                    </span>
+                  </div>
+
+                  <h3 className="display-sm mt-12 text-ink">{category.title}</h3>
+                  <p className="mt-3 max-w-xs text-[0.9375rem] leading-relaxed text-muted-foreground">
+                    {category.description}
+                  </p>
+
+                  <p className="mt-auto pt-10 font-mono text-[0.6875rem] uppercase leading-relaxed tracking-[0.1em] text-ink/50">
+                    {category.products.join("  ·  ")}
+                  </p>
+                  <span className="sr-only">{t("common.readMore")}</span>
+                </Link>
+              </li>
+            ))}
+          </ul>
         </div>
-      </div>
-    </section>
+      </section>
+
+      <ConsultationCta
+        title={t("productCategories.cta.title")}
+        text={t("productCategories.cta.description")}
+        primary={{ label: t("productCategories.cta.consult"), to: "/contact" }}
+        secondary={{ label: t("productCategories.cta.catalog"), to: "/contact" }}
+      />
+    </>
   );
 };
 

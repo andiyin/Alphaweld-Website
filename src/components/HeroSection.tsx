@@ -1,154 +1,214 @@
-import { useState, useEffect } from "react";
-import { ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { ArrowRight, Pause, Play } from "lucide-react";
 import { useTranslation } from "react-i18next";
+import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
+
+const SLIDE_DURATION = 6000;
+
+const usePrefersReducedMotion = () => {
+  const [reduced, setReduced] = useState(false);
+  useEffect(() => {
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+    setReduced(mq.matches);
+    const onChange = (e: MediaQueryListEvent) => setReduced(e.matches);
+    mq.addEventListener("change", onChange);
+    return () => mq.removeEventListener("change", onChange);
+  }, []);
+  return reduced;
+};
 
 const HeroSection = () => {
   const { t } = useTranslation();
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
+  const reducedMotion = usePrefersReducedMotion();
 
   const slides = [
     {
       image: "/herosection-slideshow-uploads/buehne_schweisstisch_01.png",
+      position: "52% 50%",
       title: "SCHWEISSTISCH",
       subtitle: "Fahrbare Lenkrollen & Pneumatische Absenkfunktion",
       description: "Große Arbeitsfläche 80x60cm, kompakte Bauform 100x70cm, robustes Metallgestell - ideal zum Vorführschweißen.",
-      cta: t('hero.cta1'),
-      link: "/products/equipment"
+      cta: t("hero.cta1"),
+      link: "/products",
     },
     {
       image: "/herosection-slideshow-uploads/buehne_mobilMIG-250_01.png",
+      position: "61% 50%",
       title: "MOBILMIG-250",
       subtitle: "Kompakte Bauform & 4-Rollen Drahtantrieb",
       description: "Stufenlose Spannungsregelung und Drahtvorschubgeschwindigkeit mit automatischer Drahtrückbrandregelung.",
-      cta: t('hero.cta2'),
-      link: "/products/machines"
+      cta: t("hero.cta2"),
+      link: "/products/machines",
     },
     {
       image: "/herosection-slideshow-uploads/buehne_brenner_01.png",
+      position: "55% 50%",
       title: "SCHWEISSBRENNER",
       subtitle: "Für jeden eine optimale Lösung",
       description: "Aus unserer langjährigen Erfahrung und Zuverlässigkeit - hochwertige Schweißbrenner für professionelle Anwendungen.",
-      cta: t('hero.cta1'),
-      link: "/products/torches"
+      cta: t("hero.cta1"),
+      link: "/products/migmag-brenner",
     },
     {
       image: "/herosection-slideshow-uploads/buehne_b.png",
+      position: "62% 50%",
       title: "ALPHAFORCE",
       subtitle: "Breite Produktpalette hochwertiger Schweißgeräte",
       description: "Für Industrie-, Handwerk- und Montagebereich - moderne Schweißtechnik in verschiedenen Leistungsklassen.",
-      cta: t('hero.cta2'),
-      link: "/products/alphaforce"
+      cta: t("hero.cta2"),
+      link: "/products/machines",
     },
     {
       image: "/herosection-slideshow-uploads/buehne_helme.png",
+      position: "56% 50%",
       title: "AUTOMATIKSCHUTZHELME",
       subtitle: "Black Star Pro - Großes Sichtfeld 100x60mm",
       description: "4 Lichtsensoren, einstellbare Schleiffunktion, auswechselbare Lithium-Batterie für maximalen Schutz.",
-      cta: t('hero.cta1'),
-      link: "/products/safety"
-    }
+      cta: t("hero.cta1"),
+      link: "/products/arbeitsschutz",
+    },
   ];
 
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % slides.length);
-    }, 6000);
-    return () => clearInterval(timer);
-  }, [slides.length]);
-
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % slides.length);
-  };
-
-  const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
-  };
+  const isRunning = !isPaused && !isHovered && !reducedMotion;
+  const next = () => setCurrentSlide((prev) => (prev + 1) % slides.length);
+  const pad = (n: number) => String(n).padStart(2, "0");
 
   return (
-    <section className="relative h-[400px] md:h-[500px] lg:h-[600px] overflow-hidden">
-      {/* Slides */}
-      {slides.map((slide, index) => (
-        <div
-          key={index}
-          className={`absolute inset-0 transition-transform duration-700 ease-in-out ${
-            index === currentSlide ? "translate-x-0" : 
-            index < currentSlide ? "-translate-x-full" : "translate-x-full"
-          }`}
-        >
-          <div className="relative h-full">
-            {/* Background Image */}
-            <div 
-              className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-              style={{
-                backgroundImage: `url(${slide.image})`
-              }}
-            />
-            
-            {/* Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-r from-secondary/90 via-secondary/60 to-transparent" />
-            
-            {/* Content */}
-            <div className="relative h-full flex items-center">
-              <div className="container mx-auto px-4">
-                <div className="max-w-2xl">
-                  <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 leading-tight">
-                    {slide.title}
-                  </h1>
-                  <h2 className="text-xl md:text-2xl text-primary font-semibold mb-4">
-                    {slide.subtitle}
-                  </h2>
-                  <p className="text-lg md:text-xl text-white/90 mb-8 leading-relaxed">
-                    {slide.description}
+    <section
+      className="border-b border-line"
+      aria-roledescription="carousel"
+      aria-label="Alphaweld"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      <h1 className="sr-only">Alphaweld GmbH – {t("footer.company")}</h1>
+
+      <div className="container pt-10 md:pt-14">
+        {/* Copy — all slides share one grid cell so the height never jumps */}
+        <div className="grid">
+          {slides.map((slide, index) => {
+            const active = index === currentSlide;
+            return (
+              <div
+                key={slide.title}
+                role="group"
+                aria-roledescription="slide"
+                aria-label={`${index + 1} / ${slides.length}`}
+                aria-hidden={!active}
+                {...(!active ? { inert: "" } : {})}
+                className={cn(
+                  "grid grid-cols-1 content-start gap-8 transition-opacity duration-700 ease-refined [grid-area:1/1] md:grid-cols-12 md:content-stretch md:gap-8",
+                  active ? "opacity-100" : "pointer-events-none opacity-0"
+                )}
+              >
+                <div className="md:col-span-8">
+                  <p className="eyebrow flex items-center gap-3 text-ink/55">
+                    <span className="tabular-nums text-ink">{pad(index + 1)}</span>
+                    <span className="h-px w-8 bg-amber" aria-hidden="true" />
+                    <span>{slide.title}</span>
                   </p>
-                  <div className="flex flex-col sm:flex-row gap-4">
-                    <Button variant="hero" size="xl" className="group">
-                      {slide.cta}
-                      <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                  <h2 className="display-xl mt-7 max-w-[20ch] text-ink">{slide.subtitle}</h2>
+                </div>
+                <div className="flex flex-col justify-end md:col-span-4">
+                  <p className="lede max-w-sm">{slide.description}</p>
+                  <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+                    <Button asChild size="lg">
+                      <Link to={slide.link}>
+                        {slide.cta}
+                        <ArrowRight className="group-hover/btn:translate-x-1" />
+                      </Link>
                     </Button>
-                    <Button variant="outline" size="xl" className="bg-white/10 border-white/20 text-white hover:bg-white/20">
-                      {t('hero.contactButton')}
+                    <Button asChild variant="outline" size="lg">
+                      <Link to="/contact">{t("hero.contactButton")}</Link>
                     </Button>
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
+            );
+          })}
         </div>
-      ))}
 
-      {/* Navigation Arrows */}
-      <button
-        onClick={prevSlide}
-        className="absolute left-4 top-1/2 -translate-y-1/2 z-10 p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors backdrop-blur-sm"
-        aria-label="Previous slide"
-      >
-        <ChevronLeft className="h-6 w-6 text-white" />
-      </button>
-      
-      <button
-        onClick={nextSlide}
-        className="absolute right-4 top-1/2 -translate-y-1/2 z-10 p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors backdrop-blur-sm"
-        aria-label="Next slide"
-      >
-        <ChevronRight className="h-6 w-6 text-white" />
-      </button>
-
-      {/* Dots Indicator */}
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10">
-        <div className="flex space-x-2">
-          {slides.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => setCurrentSlide(index)}
-              className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                index === currentSlide 
-                  ? "bg-primary scale-125" 
-                  : "bg-white/50 hover:bg-white/70"
-              }`}
-              aria-label={`Go to slide ${index + 1}`}
+        {/* Stage — the plate shares the photographs' exact backdrop */}
+        <div className="plate mt-12 aspect-[4/3] sm:aspect-[16/9] md:mt-14 lg:aspect-auto lg:h-[min(36vw,540px)]">
+          {slides.map((slide, index) => (
+            <img
+              key={slide.image}
+              src={slide.image}
+              alt={index === currentSlide ? slide.title : ""}
+              aria-hidden={index !== currentSlide}
+              loading={index === 0 ? "eager" : "lazy"}
+              className={cn(
+                "absolute inset-0 h-full w-full object-cover transition-[opacity,transform] duration-1000 ease-refined lg:object-contain",
+                index === currentSlide ? "scale-100 opacity-100" : "scale-[1.015] opacity-0"
+              )}
+              style={{ objectPosition: slide.position }}
             />
           ))}
+        </div>
+
+        {/* Index */}
+        <div className="flex items-stretch">
+          <ol className="grid flex-1 grid-cols-5">
+            {slides.map((slide, index) => {
+              const active = index === currentSlide;
+              return (
+                <li key={slide.title}>
+                  <button
+                    type="button"
+                    onClick={() => setCurrentSlide(index)}
+                    aria-label={`${pad(index + 1)} ${slide.title}`}
+                    aria-current={active}
+                    className="group relative block w-full pb-7 pr-4 pt-5 text-left"
+                  >
+                    <span className="absolute inset-x-0 top-0 h-px bg-line" aria-hidden="true" />
+                    {active && (
+                      <span
+                        key={`${currentSlide}-${reducedMotion}`}
+                        aria-hidden="true"
+                        onAnimationEnd={next}
+                        className={cn(
+                          "absolute inset-x-0 top-0 h-[2px] origin-left bg-amber",
+                          !reducedMotion && "animate-progress"
+                        )}
+                        style={{
+                          animationDuration: `${SLIDE_DURATION}ms`,
+                          animationPlayState: isRunning ? "running" : "paused",
+                        }}
+                      />
+                    )}
+                    <span className="flex items-baseline gap-3">
+                      <span className={cn("index-num transition-colors", active ? "text-ink" : "text-ink/35 group-hover:text-ink/70")}>
+                        {pad(index + 1)}
+                      </span>
+                      <span
+                        className={cn(
+                          "eyebrow hidden truncate transition-colors md:inline",
+                          active ? "text-ink" : "text-ink/40 group-hover:text-ink/70"
+                        )}
+                      >
+                        {slide.title}
+                      </span>
+                    </span>
+                  </button>
+                </li>
+              );
+            })}
+          </ol>
+          <button
+            type="button"
+            onClick={() => setIsPaused((p) => !p)}
+            className="relative flex w-10 shrink-0 items-start justify-end pt-[1.05rem] text-ink/40 transition-colors hover:text-ink"
+            aria-label={isPaused ? "Play" : "Pause"}
+            aria-pressed={isPaused}
+          >
+            <span className="absolute inset-x-0 top-0 h-px bg-line" aria-hidden="true" />
+            {isPaused ? <Play className="h-3.5 w-3.5" /> : <Pause className="h-3.5 w-3.5" />}
+          </button>
         </div>
       </div>
     </section>

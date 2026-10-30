@@ -1,119 +1,213 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Alphaweld Design System - Industrial Welding Technology */
+/*
+ * Alphaweld design system
+ * Quiet, architectural, editorial. Neutral paper, ink derived from the logo blue,
+ * the logo amber as the single accent, and #F1F1F1 "stone" — the exact backdrop
+ * of the product photography — so every image sits seamlessly in its frame.
+ */
 
 @layer base {
   :root {
-    /* Core Brand Colors */
-    --background: 0 0% 100%;
-    --foreground: 210 100% 20%;
+    --ink: 214 52% 11%;
+    --ink-soft: 214 30% 22%;
+    --paper: 60 9% 98%;
+    --stone: 0 0% 94.5%;
+    --stone-deep: 0 0% 91%;
+    --line: 60 5% 88%;
+    --line-strong: 60 4% 78%;
+    --amber: 37 83% 51%;
+    --cobalt: 211 75% 36%;
 
-    /* Alphaweld Brand Orange - Updated for new logo */
-    --primary: 25 95% 53%;
-    --primary-foreground: 0 0% 100%;
-    --primary-hover: 25 95% 48%;
+    --background: var(--paper);
+    --foreground: var(--ink);
 
-    /* Alphaweld Industrial Blue - Updated for new logo */
-    --secondary: 210 100% 35%;
-    --secondary-foreground: 0 0% 100%;
-    --secondary-hover: 210 100% 30%;
+    --primary: var(--ink);
+    --primary-foreground: var(--paper);
+    --primary-hover: var(--ink-soft);
 
-    /* Technical Gray System */
-    --muted: 210 10% 96%;
-    --muted-foreground: 210 15% 45%;
-    --muted-dark: 210 15% 88%;
+    --secondary: var(--stone);
+    --secondary-foreground: var(--ink);
+    --secondary-hover: var(--stone-deep);
 
-    --accent: 210 10% 94%;
-    --accent-foreground: 210 100% 20%;
+    --muted: var(--stone);
+    --muted-foreground: 218 11% 38%;
+    --muted-dark: var(--stone-deep);
 
-    /* UI Elements */
+    --accent: var(--stone);
+    --accent-foreground: var(--ink);
+
     --card: 0 0% 100%;
-    --card-foreground: 210 100% 20%;
-    
-    --border: 210 15% 92%;
-    --input: 210 15% 96%;
-    --ring: 25 95% 53%;
+    --card-foreground: var(--ink);
+    --popover: 0 0% 100%;
+    --popover-foreground: var(--ink);
 
-    --destructive: 0 75% 55%;
+    --border: var(--line);
+    --input: var(--line-strong);
+    --ring: var(--ink);
+
+    --destructive: 4 70% 46%;
     --destructive-foreground: 0 0% 100%;
 
-    /* Gradients - Updated for new logo colors */
-    --gradient-primary: linear-gradient(135deg, hsl(25 95% 53%), hsl(25 95% 58%));
-    --gradient-secondary: linear-gradient(135deg, hsl(210 100% 35%), hsl(210 100% 30%));
-    --gradient-industrial: linear-gradient(135deg, hsl(210 15% 15%), hsl(210 15% 25%));
+    --radius: 2px;
 
-    /* Shadows */
-    --shadow-elegant: 0 4px 20px -8px hsl(210 100% 20% / 0.15);
-    --shadow-industrial: 0 8px 30px -12px hsl(210 100% 20% / 0.25);
-
-    --radius: 0.375rem;
+    --header-h: 4.5rem;
 
     --sidebar-background: 0 0% 98%;
-
     --sidebar-foreground: 240 5.3% 26.1%;
-
     --sidebar-primary: 240 5.9% 10%;
-
     --sidebar-primary-foreground: 0 0% 98%;
-
     --sidebar-accent: 240 4.8% 95.9%;
-
     --sidebar-accent-foreground: 240 5.9% 10%;
-
     --sidebar-border: 220 13% 91%;
-
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
-  }
-}
-
-@layer base {
   * {
     @apply border-border;
   }
 
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+  }
+
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans antialiased;
+    font-feature-settings: "ss01", "cv11";
+    font-size: 1rem;
+    line-height: 1.65;
+  }
+
+  h1, h2, h3, h4 {
+    text-wrap: balance;
+    hyphens: manual;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  ::selection {
+    background: hsl(var(--amber) / 0.28);
+    color: hsl(var(--ink));
+  }
+
+  :focus-visible {
+    outline: 2px solid hsl(var(--ink));
+    outline-offset: 3px;
+  }
+
+  .on-ink :focus-visible {
+    outline-color: hsl(var(--paper));
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer components {
+  /* Typography */
+  .display-xl {
+    @apply font-display font-normal;
+    font-size: clamp(2.625rem, 5.6vw, 5.5rem);
+    line-height: 0.98;
+    letter-spacing: -0.02em;
+  }
+  .display-lg {
+    @apply font-display font-normal;
+    font-size: clamp(2.5rem, 5vw, 4.75rem);
+    line-height: 1;
+    letter-spacing: -0.018em;
+  }
+  .display-md {
+    @apply font-display font-normal;
+    font-size: clamp(2rem, 3.4vw, 3.25rem);
+    line-height: 1.05;
+    letter-spacing: -0.012em;
+  }
+  .display-sm {
+    @apply font-display font-normal;
+    font-size: clamp(1.625rem, 2.2vw, 2.125rem);
+    line-height: 1.12;
+    letter-spacing: -0.006em;
+  }
+  .lede {
+    font-size: clamp(1.0625rem, 1.3vw, 1.25rem);
+    line-height: 1.6;
+    @apply text-muted-foreground;
+  }
+  .eyebrow {
+    @apply font-mono uppercase text-[0.6875rem] font-medium tracking-label leading-none;
+  }
+  .index-num {
+    @apply font-mono text-[0.6875rem] tracking-[0.08em] tabular-nums leading-none;
+  }
+
+  /* Structural rules */
+  .rule {
+    @apply h-px w-full bg-line;
+  }
+
+  /* Image plate — matches the photography backdrop exactly */
+  .plate {
+    @apply relative overflow-hidden bg-stone;
+  }
+
+  /* Underline that draws in from the left */
+  .link-draw {
+    background-image: linear-gradient(currentColor, currentColor);
+    background-size: 0% 1px;
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    transition: background-size 0.45s cubic-bezier(0.2, 0.7, 0.2, 1);
+    padding-bottom: 2px;
+  }
+  .link-draw:hover,
+  .link-draw:focus-visible,
+  .group:hover .link-draw {
+    background-size: 100% 1px;
+  }
+
+  /* Legal / long-form text */
+  .legal {
+    @apply min-w-0 text-[1.0625rem] leading-[1.75] text-ink/80;
+    overflow-wrap: anywhere;
+  }
+  .legal h2 {
+    @apply font-display text-ink text-[1.875rem] leading-[1.15] mt-16 mb-5 pt-8 border-t border-line;
+  }
+  .legal h2:first-child {
+    @apply mt-0 pt-0 border-t-0;
+  }
+  .legal h3 {
+    @apply font-sans font-medium text-ink text-lg mt-10 mb-3;
+  }
+  .legal p {
+    @apply mb-5;
+  }
+  .legal ul {
+    @apply mb-6 space-y-2.5;
+  }
+  .legal ul li {
+    @apply relative pl-6;
+  }
+  .legal ul li::before {
+    content: "";
+    @apply absolute left-0 top-[0.85em] h-px w-3 bg-ink/40;
+  }
+  .legal strong {
+    @apply font-medium text-ink;
+  }
+  .legal a {
+    @apply text-ink underline decoration-line-strong underline-offset-4 hover:decoration-ink;
   }
 }
